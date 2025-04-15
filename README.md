@@ -28,7 +28,7 @@ python3 -m main --rub 1000 --usd 100 --eur 50 --period 10
 | --rub     | Начальный баланс RUB              | --rub 1000       |
 | --usd     | Начальный баланс USD              | --usd 200        |
 | --eur     | Начальный баланс EUR              | --eur 150        |
-| --period  | Интервал обновления курсов (мин)  | --period 5       |
+| --period  | Интервал обновления курсов (сек)  | --period 5       |
 | --debug   | Режим отладки                     | --debug true     |
 
 ### Примеры запуска:
@@ -42,15 +42,15 @@ python3 -m main --rub 1000 --usd 100 --eur 50 --period 10
    python3 -m main --rub 1000 --usd 50 --debug true
    ```
 
-3. С интервалом обновления 5 минут:
+3. С интервалом обновления 5000 секунд:
    ```bash
-   python3 -m main --rub 1000 --usd 100 --eur 50 --period 5
+   python3 -m main --rub 1000 --usd 100 --eur 50 --period 5000
    ```
 
 После запуска сервис будет доступен по адресу: `http://localhost:8000`
 
 ## REST API Endpoints
-
+GET /api/docs - сваггер
 ### Получение данных:
 - `GET /{currency}/get` - получить баланс валюты (USD, EUR, RUB)
 - `GET /amount/get` - получить полную сводку по портфелю

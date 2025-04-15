@@ -1,0 +1,58 @@
+[project]
+name = "currency-rate"
+version = "0.1.0"
+description = "Test Task: асинхронный сервис получающий данные о курсе валют"
+authors = [
+    { name = "Егор Тимирязев", email = "kozhaniichelovek322@gmail.com" }
+]
+readme = "README.md"
+requires-python = ">=3.11"
+
+[tool.poetry]
+packages = [
+    { include = "application", from = "src" }
+]
+
+dependencies = {pydantic = "^2.11.3",pydantic-settings = "^2.8.1",httpx = "^0.28.1",fastapi = "^0.115.12",uvicorn = "^0.34.1",pre-commit = "^4.2.0"}
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.0.0"
+pytest-asyncio = "^0.23.0"
+mypy = "^1.8.0"
+black = "^24.2.0"
+isort = "^5.13.2"
+ruff = "^0.3.2"
+pre-commit = "^4.2.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+ignore = []
+select = ["E", "F", "B", "UP", "SIM"]
+line-length = 90
+target-version = "py311"
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+extend-exclude = ["tests"]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401", "E501"]
+"deps.py" = ["F401"]
+"tests/updated/conftest.py" = ["F403"]
+
+[tool.ruff.flake8-bugbear]
+extend-immutable-calls = ["fastapi.Depends", "fastapi.Query", "fastapi.Header"]
+
+[tool.ruff.mccabe]
+max-complexity = 10
+
+[tool.black]
+line-length = 90
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+line_length = 88
+known_third_party = ["fastapi"]
+known_first_party = ["currency_rate", "restful_api"]

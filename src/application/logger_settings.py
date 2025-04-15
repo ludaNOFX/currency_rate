@@ -96,7 +96,4 @@ def logging_setup(settings: Base) -> None:
 
     # Настройка логгеров HTTP-библиотек в зависимости от debug-режима
     http_loggers = ["httpx", "httpcore"]
-    if settings.DEBUG:
-        _set_lvl_loggers(logging.DEBUG, *http_loggers)
-    else:
-        _set_lvl_loggers(logging.WARNING, *http_loggers)
+    _set_lvl_loggers(logging.WARNING, *http_loggers)

@@ -53,7 +53,9 @@ config_map = {
 env_variable = os.environ.get("PROJ_ENV")
 
 if env_variable is None:
-    raise ValueError("Not found 'PROJ_ENV' enviroment variable")
+    raise ValueError(
+        "!!!!!Not found 'PROJ_ENV' enviroment variable ПОЧИТАЙ README.md!!!!"
+    )
 
 env_variable = env_variable.lower()
 if env_variable not in config_map:

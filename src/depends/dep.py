@@ -1,6 +1,9 @@
+from collections.abc import Callable
 from typing import Optional
 
+from core.scheduler.scheduler import Scheduler
 from core.dto.currency_dto import AmountCurrencyListDTO, CodeCurrencyListDTO
+from core.interface.scheduler import IScheduler
 from core.repo.portfolio_repo import Portfolio
 from core.interface.portfolio import IPortfolio
 from infra.services.currency.currency_service import CurrencyHTTP
@@ -23,3 +26,7 @@ def create_repo_portfolio(
     currencies: Optional[CodeCurrencyListDTO] = None,  # noqa: UP007
 ) -> IPortfolio:
     return Portfolio(initial_amounts, currencies)
+
+
+def create_scheduler(task: Callable, interval: int) -> IScheduler:
+    return Scheduler(task=task, interval=interval)

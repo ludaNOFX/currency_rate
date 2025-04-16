@@ -13,7 +13,7 @@ from core.interface.base_http_service import IBASEHTTPService
 logger = logging.getLogger(__name__)
 
 
-class CurrencyServiceHTTP:
+class CurrencyServiceHTTPUSECASE:
     def __init__(self, service: IBASEHTTPService, repo: IPortfolio) -> None:
         self._service = service
         self._repo = repo
